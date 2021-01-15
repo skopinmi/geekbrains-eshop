@@ -9,6 +9,7 @@
         <module name="shop-database" />
         <module name="shop-picture-service-app" />
         <module name="spring-cloud-config" />
+        <module name="spring-gateway" />
         <module name="shop-picture-service" />
         <module name="spring-eureka-server" />
         <module name="shop-admin-ui" />
@@ -25,6 +26,7 @@
       <module name="shop-ui" options="-parameters" />
       <module name="spring-cloud-config" options="-parameters" />
       <module name="spring-eureka-server" options="-parameters" />
+      <module name="spring-gateway" options="-parameters" />
     </option>
   </component>
 </project>
