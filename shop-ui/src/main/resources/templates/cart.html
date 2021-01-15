@@ -31,7 +31,7 @@
 					<tbody>
 						<tr th:each="lineItem : ${lineItems}">
 							<td class="cart_product">
-								<a th:href="@{/product/{id}(id=${lineItem.productId})}"><img th:src="@{/picture/{id}(id=${lineItem.productRepr.pictureIds[0]})}" alt="img"></a>
+								<a th:href="@{/product/{id}(id=${lineItem.productId})}"><img th:src="@{{pictureServiceUrl}/picture/{id}(id=${lineItem.productRepr.pictureIds[0]}, pictureServiceUrl=${pictureServiceUrl})}" alt="img"></a>
 							</td>
 							<td class="cart_description">
 								<h4><a th:href="@{/product/{id}(id=${lineItem.productId})}" th:text="${lineItem.productRepr.name}">Colorblock Scuba</a></h4>

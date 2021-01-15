@@ -19,7 +19,7 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img th:src="@{/picture/{id}(id = ${product.mainPictureId})}" alt="" />
+								<img th:src="@{{pictureServiceUrl}/picture/{id}(id=${product.mainPictureId}, pictureServiceUrl=${pictureServiceUrl})}" alt="img" />
 								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -29,11 +29,11 @@
 
 										<div class="item active" >
 											<a href="">
-											  <img th:src="@{/picture/{id}(id = ${product.mainPictureId})}" alt="">
+											  <img th:src="@{{pictureServiceUrl}/picture/{id}(id = ${product.getMainPictureId()}, pictureServiceUrl=${pictureServiceUrl})}" alt="">
 										  </a>
 										</div>
 										<div th:each="id : ${product.pictureIds}" class="item" >
-											<a href=""><img th:src="@{/picture/{id}(id = ${id})}" alt=""></a>
+											<a href=""><img th:src="@{{pictureServiceUrl}/picture/{id}(id = ${id}, pictureServiceUrl=${pictureServiceUrl})}" alt=""></a>
 										</div>
 									</div>
 
