@@ -85,7 +85,6 @@ public class CartServiceTest {
         assertEquals(0, lineItems.size());
     }
 
-
     @Test
     public void testGetSubTotal() {
         ProductRepr expectedProduct = createProductRepr(1l, "123", "Product name1");
@@ -99,6 +98,7 @@ public class CartServiceTest {
     }
 
 
+// создание продукта (ProductRepr)
 
     public ProductRepr createProductRepr (Long id, String price, String name) {
         ProductRepr expectedProduct = new ProductRepr();
