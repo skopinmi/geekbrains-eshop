@@ -16,11 +16,11 @@
                 </ul>
             </li>
             <li>
-                <a href="#sm_expand_2" data-toggle="collapse">
+                <a href="#sm_expand_2" data-toggle="collapse" id="management">
                     <i class="fa fa-fw fa-link"></i>Управление товарами
                 </a>
                 <ul id="sm_expand_2" class="list-unstyled collapse">
-                    <li th:classappend="${activePage == 'Products'} ? active"><a th:href="@{'/products'}">Список товаров</a></li>
+                    <li th:classappend="${activePage == 'Products'} ? active"><a th:href="@{'/products'}" >Список товаров</a></li>
                     <li th:classappend="${activePage == 'Categories'} ? active"><a th:href="@{'/categories'}">Список категорий</a></li>
                     <li th:classappend="${activePage == 'Brands'} ? active"><a th:href="@{'/brands'}">Список брендов</a></li>
                 </ul>
