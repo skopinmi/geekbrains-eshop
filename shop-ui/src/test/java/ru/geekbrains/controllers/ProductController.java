@@ -64,12 +64,12 @@ public class ProductController {
     @Test
     public void testProductDetails() throws Exception {
         Brand brand = brandRepository.save(new Brand("brand"));
-        Category category = categoryRepository.save(new Category("Category"));
+        Category category = categoryRepository.save(new Category("category"));
         Product product = productRepository.save(new Product("Product", new BigDecimal(1234), category, brand));
 
-        mvc.perform(get("/product_details/" + product.getId()))
+        mvc.perform(get("/product/" + product.getId()))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(view().name("product_details"))
+                .andExpect(view().name("product"))
                 .andExpect(model().attributeExists("product"))
                 .andExpect(model().attribute("product", new BaseMatcher<Product>() {
 

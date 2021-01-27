@@ -2,10 +2,12 @@ package ru.geekbrains.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.access.method.P;
 import ru.geekbrains.controllers.repr.ProductRepr;
 import ru.geekbrains.service.model.LineItem;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,7 +30,7 @@ public class CartServiceTest {
     }
 
     @Test
-    public void testAddOnProduct() {
+    public void testAddOneProduct() {
         ProductRepr expectedProduct = new ProductRepr();
         expectedProduct.setId(1L);
         expectedProduct.setPrice(new BigDecimal(123));
@@ -46,6 +48,33 @@ public class CartServiceTest {
         assertEquals(expectedProduct.getId(), lineItem.getProductId());
         assertNotNull(lineItem.getProductRepr());
         assertEquals(expectedProduct.getName(), lineItem.getProductRepr().getName());
+        assertEquals(expectedProduct.getPrice(), lineItem.getProductRepr().getPrice());
+    }
+
+    @Test
+    public void testAddFourProducts() {
+
+        List<ProductRepr> list = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            list.add( new ProductRepr());
+            list.get(i).setId(1L + i);
+            list.get(i).setPrice(new BigDecimal(123 * i));
+            list.get(i).setName("Product name " + i);
+            cartService.addProductQty(list.get(i),  1 + i);
+        }
+
+        List<LineItem> lineItems = cartService.getLineItems();
+        assertNotNull(lineItems);
+        assertEquals(4, lineItems.size());
+
+        for (int i = 0; i < lineItems.size(); i++) {
+            LineItem lineItem = lineItems.get(i);
+            assertEquals(1 + i, lineItem.getQty());
+            assertEquals(list.get(i).getId(), lineItem.getProductId());
+            assertNotNull(lineItem.getProductRepr());
+            assertEquals(list.get(i).getName(), lineItem.getProductRepr().getName());
+            assertEquals(list.get(i).getPrice(), lineItem.getProductRepr().getPrice());
+        }
     }
 
     @Test
