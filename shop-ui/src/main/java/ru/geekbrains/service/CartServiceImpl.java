@@ -45,28 +45,11 @@ public class CartServiceImpl implements CartService {
         this.lineItems = lineItems.stream().collect(Collectors.toMap(li -> li, LineItem::getQty));
     }
 
-//    @Override
-//    public void addProductQty(ProductRepr productRepr, String color, String material, int qty) {
-//        LineItem lineItem = new LineItem(productRepr, color, material);
-//        lineItems.put(lineItem, lineItems.getOrDefault(lineItem, 0) + qty);
-//    }
-
     @Override
     public void addProductQty(ProductRepr productRepr, int qty) {
         LineItem lineItem = new LineItem(productRepr);
         lineItems.put(lineItem, lineItems.getOrDefault(lineItem, 0) + qty);
     }
-
-//    @Override
-//    public void removeProductQty(ProductRepr productRepr, String color, String material, int qty) {
-//        LineItem lineItem = new LineItem(productRepr, color, material);
-//        int currentQty = lineItems.getOrDefault(lineItem, 0);
-//        if (currentQty - qty > 0) {
-//            lineItems.put(lineItem, currentQty - qty);
-//        } else {
-//            lineItems.remove(lineItem);
-//        }
-//    }
 
     @Override
     public void removeProductQty(ProductRepr productRepr,  int qty) {
@@ -78,11 +61,6 @@ public class CartServiceImpl implements CartService {
             lineItems.remove(lineItem);
         }
     }
-
-//    @Override
-//    public void removeProduct(ProductRepr productRepr, String color, String material) {
-//        lineItems.remove(new LineItem(productRepr, color, material));
-//    }
 
     @Override
     public void removeProduct(ProductRepr productRepr) {

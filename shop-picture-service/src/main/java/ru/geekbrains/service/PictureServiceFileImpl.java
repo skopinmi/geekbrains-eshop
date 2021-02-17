@@ -41,11 +41,6 @@ public class PictureServiceFileImpl implements PictureService {
     public Optional<String> getPictureContentTypeById(long id) {
         return repository.findAllPictureNameById(id)
                 .map(Picture::getContentType);
-//        было
-//        return repository.findById(id)
-//                // TODO перенести проверку на уровень JPQL запроса
-//                .filter(pic -> pic.getPictureData().getFileName() != null)
-//                .map(Picture::getContentType);
     }
 
     @Override
@@ -61,20 +56,6 @@ public class PictureServiceFileImpl implements PictureService {
                         throw new RuntimeException(ex);
                     }
                 });
-//        было
-//        return repository.findById(id)
-//                // TODO перенести проверку на уровень JPQL запроса
-//                .filter(pic -> pic.getPictureData().getFileName() != null)
-//                .map(pic -> Path.of(storagePath, pic.getPictureData().getFileName()))
-//                .filter(Files::exists)
-//                .map(path -> {
-//                    try {
-//                        return Files.readAllBytes(path);
-//                    } catch (IOException ex) {
-//                        logger.error("Can't open picture file", ex);
-//                        throw new RuntimeException(ex);
-//                    }
-//                });
     }
 
     @Override
@@ -111,4 +92,6 @@ public class PictureServiceFileImpl implements PictureService {
         }
         repository.deleteById(id);
     }
+
+
 }
